@@ -1,3 +1,6 @@
+"use client";
+
+import useCartStore from "@/store/cartStore";
 import {
   Button,
   Container,
@@ -47,6 +50,7 @@ const bottomNav: string[] = [
 ];
 
 const Header = () => {
+  const { cart } = useCartStore();
   return (
     <Stack gap={0} className="bg-white shadow-gray-100 shadow-xl">
       <Container
@@ -80,13 +84,30 @@ const Header = () => {
             <Link
               key={item.text}
               className="flex"
-              style={{ flexDirection: "column", alignItems: "center" }}
+              style={{
+                flexDirection: "column",
+                alignItems: "center",
+                position: "relative",
+              }}
               href={item.to}
             >
               {item.icon}
               <Text fz={12} fw={500}>
                 {item.text}
               </Text>
+              {item.text === "Savatcha" && (
+                <Text
+                  pos={"absolute"}
+                  top={-5}
+                  right={-1}
+                  className="bg-blue-500 rounded-[50%] flex items-center justify-center  text-white"
+                  w={20}
+                  h={20}
+                  c={"white"}
+                >
+                  {cart.length}
+                </Text>
+              )}
             </Link>
           ))}
         </Flex>

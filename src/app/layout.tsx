@@ -7,6 +7,7 @@ import "@mantine/core/styles.css";
 import "@mantine/carousel/styles.css";
 import QueryProvider from "@/providers/QueryProvider";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import Footer from "./components/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -37,6 +38,7 @@ export default function RootLayout({
           <MantineProvider>
             <Header />
             {children}
+            <Footer />
           </MantineProvider>
           <ReactQueryDevtools initialIsOpen={false} />
         </QueryProvider>

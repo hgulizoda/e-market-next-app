@@ -34,7 +34,9 @@ const CartPage = () => {
           <Flex justify={"space-between"} mt={20}>
             <Text> Summa:</Text>
             <Text fw={600}>
-              {cart.reduce((sum, item) => sum + item.price * item.quantity, 0)}
+              {cart
+                .reduce((sum, item) => sum + item.price * item.quantity, 0)
+                .toFixed(2)}
               so&apos;m
             </Text>
           </Flex>
@@ -42,8 +44,12 @@ const CartPage = () => {
             <Text> Skidka: </Text>
             <Text fw={600}>
               -
-              {cart.reduce((sum, item) => sum + item.price * item.quantity, 0) *
-                0.2}
+              {(
+                cart.reduce(
+                  (sum, item) => sum + item.price * item.quantity,
+                  0
+                ) * 0.2
+              ).toFixed(2)}
               so&apos;m
             </Text>
           </Flex>
@@ -53,8 +59,12 @@ const CartPage = () => {
               Umumiy narx:
             </Text>
             <Text fw={700} fz={18}>
-              {cart.reduce((sum, item) => sum + item.price * item.quantity, 0) *
-                0.8}
+              {(
+                cart.reduce(
+                  (sum, item) => sum + item.price * item.quantity,
+                  0
+                ) * 0.8
+              ).toFixed(2)}
               so&apos;m
             </Text>
           </Flex>
