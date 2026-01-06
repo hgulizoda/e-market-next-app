@@ -34,7 +34,7 @@ const carouseldata: string[] = [
 ];
 export default function Home() {
   const autoplay = useRef(Autoplay({ delay: 3000 }));
-  const { data } = useQuery<response>({
+  const { data } = useQuery({
     queryKey: ["products"],
     queryFn: async () => {
       const res = await API.get<response>("/products");
@@ -42,7 +42,7 @@ export default function Home() {
     },
   });
 
-  const products: I_API[] = data?.data?.products ?? [];
+  const products: I_API[] = data?.data.products ?? [];
   console.log(products);
 
   return (
