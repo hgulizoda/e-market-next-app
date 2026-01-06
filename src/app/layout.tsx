@@ -4,6 +4,9 @@ import "./globals.css";
 import { mantineHtmlProps, MantineProvider } from "@mantine/core";
 import Header from "./components/Header";
 import "@mantine/core/styles.css";
+import "@mantine/carousel/styles.css";
+import QueryProvider from "@/providers/QueryProvider";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,10 +33,13 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <MantineProvider>
-          <Header />
-          {children}
-        </MantineProvider>
+        <QueryProvider>
+          <MantineProvider>
+            <Header />
+            {children}
+          </MantineProvider>
+          <ReactQueryDevtools initialIsOpen={false} />
+        </QueryProvider>
       </body>
     </html>
   );
