@@ -47,7 +47,7 @@ export default function ProductDetailPage() {
   const { data, isLoading } = useQuery({
     queryKey: ["products"],
     queryFn: async () => {
-      const res = await API.get<response>("/products");
+      const res = await API.get("/products");
       return res;
     },
   });

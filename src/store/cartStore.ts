@@ -9,13 +9,13 @@ const loadCart = () => {
   return data ? JSON.parse(data) : [];
 };
 
-const saveCart = (cart: any) => {
-  if (typeof window === "undefined") return;
-  localStorage.setItem(CART_KEY, JSON.stringify(cart));
-};
-
 export type CartItem = I_API & {
   quantity: number;
+};
+
+const saveCart = (cart: CartItem[]) => {
+  if (typeof window === "undefined") return;
+  localStorage.setItem(CART_KEY, JSON.stringify(cart));
 };
 
 interface CartState {

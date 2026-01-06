@@ -37,7 +37,7 @@ export default function Home() {
   const { data } = useQuery({
     queryKey: ["products"],
     queryFn: async () => {
-      const res = await API.get<response>("/products");
+      const res = await API.get("/products");
       return res;
     },
   });
