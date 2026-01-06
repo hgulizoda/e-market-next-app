@@ -16,7 +16,6 @@ import {
   Divider,
   SimpleGrid,
   ActionIcon,
-  Box,
   Flex,
 } from "@mantine/core";
 import {
@@ -151,7 +150,11 @@ export default function ProductDetailPage() {
                   </Button>
                   <Text>{cart.find((item) => item.id === id)?.quantity}</Text>
                   <Button
-                    onClick={() => decreaseQuantity(id)}
+                    onClick={() =>
+                      cart.find((item) => item.id == id)?.quantity === 0
+                        ? removeItem(id)
+                        : decreaseQuantity(id)
+                    }
                     px={60}
                     bg={"cyan"}
                   >
@@ -169,9 +172,6 @@ export default function ProductDetailPage() {
                   Xarid qilish
                 </Button>
               )}
-              <Button size="md" fullWidth>
-                Qo&apos;shish
-              </Button>
             </Group>
           </Stack>
         </Grid.Col>

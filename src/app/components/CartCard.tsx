@@ -12,6 +12,7 @@ import {
   ActionIcon,
 } from "@mantine/core";
 import { IconHeart, IconTrash, IconMinus, IconPlus } from "@tabler/icons-react";
+import Link from "next/link";
 
 type CartItemCardProps = {
   thumbnail: string;
@@ -33,7 +34,7 @@ const CartItemCard = ({
   const { cart, addItem, removeItem, increaseQuantity, decreaseQuantity } =
     useCartStore();
   return (
-    <Card withBorder radius="md" p="md">
+    <Card withBorder radius="md" p="md" component={Link} href={`/${id}`}>
       <Flex gap="md" align="center">
         <Checkbox />
 
