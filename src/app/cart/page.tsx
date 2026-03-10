@@ -11,10 +11,10 @@ import {
   Stack,
   Text,
 } from "@mantine/core";
+import { JSX } from "react";
 
-const CartPage = () => {
+const CartPage = (): JSX.Element => {
   const { cart } = useCartStore();
-  console.log(cart);
 
   return (
     <Container size={1300} mt={60}>
@@ -47,7 +47,7 @@ const CartPage = () => {
               {(
                 cart.reduce(
                   (sum, item) => sum + item.price * item.quantity,
-                  0
+                  0,
                 ) * 0.2
               ).toFixed(2)}
               so&apos;m
@@ -62,7 +62,7 @@ const CartPage = () => {
               {(
                 cart.reduce(
                   (sum, item) => sum + item.price * item.quantity,
-                  0
+                  0,
                 ) * 0.8
               ).toFixed(2)}
               so&apos;m

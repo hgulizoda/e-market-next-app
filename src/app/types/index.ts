@@ -1,4 +1,4 @@
-interface Ireview {
+interface Review {
   rating: number;
   comment: string;
   date: string;
@@ -6,7 +6,7 @@ interface Ireview {
   reviewerEmail: string;
 }
 
-interface I_API {
+interface Product {
   id: number;
   title: string;
   description: string;
@@ -27,7 +27,7 @@ interface I_API {
   warrantyInformation: string;
   shippingInformation: string;
   availabilityStatus: string;
-  reviews: Ireview[];
+  reviews: Review[];
   returnPolicy: string;
   minimumOrderQuantity: number;
   meta: {
@@ -40,4 +40,4 @@ interface I_API {
   thumbnail: string;
 }
 
-export default I_API;
+export default Product;

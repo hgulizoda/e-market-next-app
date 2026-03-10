@@ -23,7 +23,6 @@ import {
   IconBrandYoutube,
   IconRss,
 } from "@tabler/icons-react";
-import { start } from "repl";
 
 const Footer = () => {
   return (
@@ -117,7 +116,7 @@ const Footer = () => {
                   <Paper key={item} px="xl" py="md" radius="md" bg="white">
                     <Text fw={500}>{item}</Text>
                   </Paper>
-                )
+                ),
               )}
             </Group>
           </Stack>

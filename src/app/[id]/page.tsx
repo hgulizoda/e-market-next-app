@@ -26,8 +26,9 @@ import {
 } from "@tabler/icons-react";
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "next/navigation";
-import API from "../api/intex";
+import API from "../api";
 import I_API from "../types";
+import { JSX } from "react";
 
 interface response {
   data: {
@@ -38,7 +39,7 @@ interface response {
   };
 }
 
-export default function ProductDetailPage() {
+export default function ProductDetailPage(): JSX.Element {
   const { cart, addItem, removeItem, decreaseQuantity, increaseQuantity } =
     useCartStore();
   const params = useParams<{ id: string }>();

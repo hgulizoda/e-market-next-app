@@ -11,10 +11,10 @@ import {
   Rating,
   Text,
 } from "@mantine/core";
-import { useRef } from "react";
+import { JSX, useRef } from "react";
 import Autoplay from "embla-carousel-autoplay";
 import { useQuery } from "@tanstack/react-query";
-import API from "./api/intex";
+import API from "./api";
 import I_API from "./types";
 import ProductCard from "./components/Card";
 interface response {
@@ -32,7 +32,7 @@ const carouseldata: string[] = [
   "https://assets.asaxiy.uz/uploads/banner/desktop/68fa06941a02a.jpg.webp",
   "https://assets.asaxiy.uz/uploads/banner/desktop/694a46611a94a.png.webp",
 ];
-export default function Home() {
+export default function Home(): JSX.Element {
   const autoplay = useRef(Autoplay({ delay: 3000 }));
   const { data } = useQuery({
     queryKey: ["products"],
