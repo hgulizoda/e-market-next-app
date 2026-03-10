@@ -1,10 +1,4 @@
-interface Review {
-  rating: number;
-  comment: string;
-  date: string;
-  reviewerName: string;
-  reviewerEmail: string;
-}
+import Review from "./review";
 
 interface Product {
   id: number;

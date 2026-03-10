@@ -27,19 +27,9 @@ import {
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "next/navigation";
 import API from "../api";
-import I_API from "../types";
-import { JSX } from "react";
+import Product from "../types/product";
 
-interface response {
-  data: {
-    products: I_API[];
-    total: number;
-    skip: number;
-    limit: number;
-  };
-}
-
-export default function ProductDetailPage(): JSX.Element {
+export default function ProductDetailPage() {
   const { cart, addItem, removeItem, decreaseQuantity, increaseQuantity } =
     useCartStore();
   const params = useParams<{ id: string }>();
@@ -53,7 +43,7 @@ export default function ProductDetailPage(): JSX.Element {
     },
   });
 
-  const products: I_API[] = data?.data.products ?? [];
+  const products: Product[] = data?.data.products ?? [];
   const item = products.find((p) => p.id === id);
 
   if (isLoading) return <div>Loading...</div>;

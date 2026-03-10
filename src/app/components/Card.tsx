@@ -1,16 +1,14 @@
 import { Button, Card, Flex, Image, Rating, rgba, Text } from "@mantine/core";
 import { IconHeart, IconShoppingCartFilled } from "@tabler/icons-react";
-import I_API from "../types";
 import Link from "next/link";
 import useCartStore from "@/store/cartStore";
+import Product from "./../types/product";
 
-const ProductCard = (props: I_API) => {
+const ProductCard = (props: Product) => {
   const { images, title, id, price, rating, reviews } = props;
-  const { cart, addItem, removeItem, increaseQuantity, decreaseQuantity } =
-    useCartStore();
+  const { cart, addItem, increaseQuantity, decreaseQuantity } = useCartStore();
 
   const isOnCart = cart.findIndex((item) => id === item.id) !== -1;
-  const cartItem = cart.find((item) => item.id == id);
 
   return (
     <Card

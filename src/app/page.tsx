@@ -15,16 +15,8 @@ import { JSX, useRef } from "react";
 import Autoplay from "embla-carousel-autoplay";
 import { useQuery } from "@tanstack/react-query";
 import API from "./api";
-import I_API from "./types";
 import ProductCard from "./components/Card";
-interface response {
-  data: {
-    products: I_API[];
-    total: number;
-    skip: number;
-    limit: number;
-  };
-}
+import Product from "./types/product";
 
 const carouseldata: string[] = [
   "https://assets.asaxiy.uz/uploads/banner/desktop/695bb07c326cb.png.webp",
@@ -42,7 +34,7 @@ export default function Home(): JSX.Element {
     },
   });
 
-  const products: I_API[] = data?.data.products ?? [];
+  const products: Product[] = data?.data.products ?? [];
   console.log(products);
 
   return (
