@@ -15,6 +15,7 @@ import { JSX } from "react";
 
 const CartPage = (): JSX.Element => {
   const { cart } = useCartStore();
+  const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   return (
     <Container size={1300} mt={60}>
@@ -34,22 +35,14 @@ const CartPage = (): JSX.Element => {
           <Flex justify={"space-between"} mt={20}>
             <Text> Summa:</Text>
             <Text fw={600}>
-              {cart
-                .reduce((sum, item) => sum + item.price * item.quantity, 0)
-                .toFixed(2)}
+              {total}
               so&apos;m
             </Text>
           </Flex>
           <Flex justify={"space-between"} mb={20} mt={8}>
             <Text> Skidka: </Text>
             <Text fw={600}>
-              -
-              {(
-                cart.reduce(
-                  (sum, item) => sum + item.price * item.quantity,
-                  0,
-                ) * 0.2
-              ).toFixed(2)}
+              -{total * 0.2}
               so&apos;m
             </Text>
           </Flex>
@@ -59,12 +52,7 @@ const CartPage = (): JSX.Element => {
               Umumiy narx:
             </Text>
             <Text fw={700} fz={18}>
-              {(
-                cart.reduce(
-                  (sum, item) => sum + item.price * item.quantity,
-                  0,
-                ) * 0.8
-              ).toFixed(2)}
+              {total * 0.8}
               so&apos;m
             </Text>
           </Flex>

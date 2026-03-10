@@ -17,6 +17,7 @@ import { useQuery } from "@tanstack/react-query";
 import API from "./api";
 import ProductCard from "./components/Card";
 import Product from "./types/product";
+import ProductsData from "./types/response";
 
 const carouseldata: string[] = [
   "https://assets.asaxiy.uz/uploads/banner/desktop/695bb07c326cb.png.webp",
@@ -26,7 +27,7 @@ const carouseldata: string[] = [
 ];
 export default function Home(): JSX.Element {
   const autoplay = useRef(Autoplay({ delay: 3000 }));
-  const { data } = useQuery({
+  const { data } = useQuery<ProductsData>({
     queryKey: ["products"],
     queryFn: async () => {
       const res = await API.get("/products");
@@ -35,7 +36,6 @@ export default function Home(): JSX.Element {
   });
 
   const products: Product[] = data?.data.products ?? [];
-  console.log(products);
 
   return (
     <Container size={1300}>

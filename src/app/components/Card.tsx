@@ -1,4 +1,4 @@
-import { Button, Card, Flex, Image, Rating, rgba, Text } from "@mantine/core";
+import { Button, Card, Flex, Image, Rating, Text } from "@mantine/core";
 import { IconHeart, IconShoppingCartFilled } from "@tabler/icons-react";
 import Link from "next/link";
 import useCartStore from "@/store/cartStore";

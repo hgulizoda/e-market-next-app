@@ -1,19 +1,23 @@
-import I_API from "@/app/types";
+import Product from "@/app/types/product";
 import { create } from "zustand";
 
 const CART_KEY = "cart";
 
-const loadCart = () => {
+const loadCart = (): CartItem[] => {
   if (typeof window === "undefined") return [];
-  const data = localStorage.getItem(CART_KEY);
-  return data ? JSON.parse(data) : [];
+  try {
+    const data = localStorage.getItem(CART_KEY);
+    return data ? (JSON.parse(data) as CartItem[]) : [];
+  } catch {
+    return [];
+  }
 };
 
-export type CartItem = I_API & {
+export type CartItem = Product & {
   quantity: number;
 };
 
-const saveCart = (cart: CartItem[]) => {
+const saveCart = (cart: CartItem[]): void => {
   if (typeof window === "undefined") return;
   localStorage.setItem(CART_KEY, JSON.stringify(cart));
 };
@@ -38,7 +42,7 @@ const useCartStore = create<CartState>((set, get) => ({
 
     if (existing) {
       updatedCart = cart.map((i) =>
-        i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i
+        i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i,
       );
     } else {
       updatedCart = [...cart, { ...item, quantity: 1 }];
@@ -56,7 +60,7 @@ const useCartStore = create<CartState>((set, get) => ({
 
   increaseQuantity: (id) => {
     const updatedCart = get().cart.map((item) =>
-      item.id === id ? { ...item, quantity: item.quantity + 1 } : item
+      item.id === id ? { ...item, quantity: item.quantity + 1 } : item,
     );
     saveCart(updatedCart);
     set({ cart: updatedCart });
@@ -65,7 +69,7 @@ const useCartStore = create<CartState>((set, get) => ({
   decreaseQuantity: (id) => {
     const updatedCart = get()
       .cart.map((item) =>
-        item.id === id ? { ...item, quantity: item.quantity - 1 } : item
+        item.id === id ? { ...item, quantity: item.quantity - 1 } : item,
       )
       .filter((item) => item.quantity > 0);
 

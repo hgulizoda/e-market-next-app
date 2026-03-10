@@ -28,6 +28,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useParams } from "next/navigation";
 import API from "../api";
 import Product from "../types/product";
+import ProductsData from "../types/response";
 
 export default function ProductDetailPage() {
   const { cart, addItem, removeItem, decreaseQuantity, increaseQuantity } =
@@ -35,7 +36,7 @@ export default function ProductDetailPage() {
   const params = useParams<{ id: string }>();
   const id = Number(params.id);
 
-  const { data, isLoading } = useQuery({
+  const { data, isLoading } = useQuery<ProductsData>({
     queryKey: ["products"],
     queryFn: async () => {
       const res = await API.get("/products");
@@ -56,9 +57,9 @@ export default function ProductDetailPage() {
           <Grid>
             <Grid.Col span={2}>
               <Stack gap="sm">
-                {item?.images.map((img, index) => (
+                {item.images.map((img) => (
                   <Image
-                    key={index}
+                    key={img}
                     src={img}
                     radius="md"
                     style={{ cursor: "pointer" }}
@@ -142,7 +143,7 @@ export default function ProductDetailPage() {
                   <Text>{cart.find((item) => item.id === id)?.quantity}</Text>
                   <Button
                     onClick={() =>
-                      cart.find((item) => item.id == id)?.quantity === 0
+                      cart.find((item) => item.id === id)?.quantity === 0
                         ? removeItem(id)
                         : decreaseQuantity(id)
                     }

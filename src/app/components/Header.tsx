@@ -21,15 +21,15 @@ import {
   IconUser,
 } from "@tabler/icons-react";
 import Link from "next/link";
-import React, { ReactNode } from "react";
+import { ReactNode } from "react";
 
-interface InavData {
+interface NavData {
   icon: ReactNode;
   text: string;
   to: string;
 }
 
-const navData: InavData[] = [
+const navData: NavData[] = [
   { icon: <IconScale height={30} />, text: "Taqqoslash", to: "/" },
   { icon: <IconCreditCard height={30} />, text: "To'lov", to: "/" },
   { icon: <IconTruck height={30} />, text: "Trek", to: "/" },
